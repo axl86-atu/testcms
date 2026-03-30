@@ -126,6 +126,28 @@
       "readTime": 4,
       "updatedAt": "2026-03-30T20:36:12.160Z",
       "createdAt": "2026-03-30T20:36:12.160Z"
+    },
+    {
+      "id": "post-1774904833719",
+      "slug": "the-stage-after",
+      "status": "published",
+      "title": "The Stage After",
+      "excerpt": "The performance ended thirty years ago. The spotlight was still on when I arrived. I have no explanation for that and I stopped looking for one.",
+      "body": "<h2>On empty performance spaces</h2>\n\nThere is a theatre in the outskirts of Lyon that closed in 1987. The seats are still there. The curtain is still there, half drawn, caught mid-gesture like a sentence that stopped before the verb. Someone left a single spotlight running — or it came on by itself, which is the version I prefer — and when I arrived at 6am with a tripod and a permission letter that may or may not have been legitimate, it was illuminating a circle of empty stage approximately two metres in diameter.\nI set up inside that circle and pointed the camera at the seats.\n\n<blockquote>\"Theatre is a verb before it is a noun, an act before it is a place.\" — Martha Graham</blockquote>",
+      "date": "2026-03-30",
+      "featuredImage": "images/theatre.png",
+      "category": "Alternative",
+      "tags": [
+        "Architecture",
+        "Light",
+        "Abandonment",
+        "Theatre",
+        "Space"
+      ],
+      "metaDescription": "A long exposure inside an abandoned Lyon theatre — on empty stages, dust in spotlights, and the strange persistence of spaces built to be watched.",
+      "readTime": 1,
+      "updatedAt": "2026-03-30T21:07:13.719Z",
+      "createdAt": "2026-03-30T21:07:13.719Z"
     }
   ],
   "categories": [
