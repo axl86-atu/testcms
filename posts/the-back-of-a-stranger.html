@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Back of a Stranger — Anna Voss</title>
+  <meta name="description" content="A long exposure street photograph taken on Langstrasse — on blur, anonymity, and what remains when a person becomes movement." />
+  <meta property="og:title" content="The Back of a Stranger" />
+  <meta property="og:description" content="A long exposure street photograph taken on Langstrasse — on blur, anonymity, and what remains when a person becomes movement." />
+  <meta property="og:image" content="../images/walking_figure.png" />
+  <meta property="og:type" content="article" />
+  <link rel="canonical" href="https://annavoss.ch/posts/the-back-of-a-stranger.html" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--black:#0a0a0a;--white:#f5f4f0;--gray:#9a9a9a;--light-gray:#e8e7e3;--font-display:'Bebas Neue',sans-serif;--font-body:'Helvetica Neue',Helvetica,Arial,sans-serif}
+    html{scroll-behavior:smooth}
+    body{background:var(--white);color:var(--black);font-family:var(--font-body);font-size:14px;line-height:1.7;cursor:crosshair}
+    .cursor{width:8px;height:8px;background:var(--black);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s}
+    .cursor.expanded{width:40px;height:40px;background:transparent;border:1px solid var(--black)}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:flex-end;padding:28px 40px 20px;background:var(--white);border-bottom:1px solid var(--black)}
+    .nav-logo{font-family:var(--font-display);font-size:26px;letter-spacing:.08em;text-decoration:none;color:var(--black);line-height:1}
+    .nav-back{font-size:11px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--gray);transition:color .2s}
+    .nav-back:hover{color:var(--black)}
+    .nav-back::before{content:'← '}
+    .post-header{margin-top:73px;display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--black);min-height:60vh}
+    .post-header-left{padding:60px 50px;display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid var(--black)}
+    .post-meta-top{display:flex;gap:20px;align-items:center;margin-bottom:32px}
+    .post-category{font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--gray)}
+    .post-dot{width:6px;height:6px;border-radius:50%;background:var(--black);display:inline-block}
+    .post-date-label{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray)}
+    .post-title{font-family:var(--font-display);font-size:clamp(40px,5vw,72px);line-height:.95;letter-spacing:.03em;margin-bottom:32px}
+    .post-excerpt{font-size:14px;line-height:1.75;color:#4a4a4a;max-width:480px}
+    .post-meta-bottom{border-top:1px solid var(--black);padding-top:24px;display:flex;gap:40px}
+    .post-meta-bottom dt{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gray);margin-bottom:4px}
+    .post-meta-bottom dd{font-size:12px}
+    .post-header-right{overflow:hidden;position:relative}
+    .post-header-right img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(100%)}
+    .no-image{width:100%;height:100%;background:var(--light-gray);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:80px;color:#ddd;min-height:400px}
+    .post-tags{padding:20px 50px;border-bottom:1px solid var(--black);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .post-tags-label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gray);margin-right:6px}
+    .tag{font-size:10px;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--light-gray);padding:4px 12px;color:var(--gray)}
+    .post-body{display:grid;grid-template-columns:1fr 2fr;border-bottom:1px solid var(--black)}
+    .post-sidebar{border-right:1px solid var(--black);padding:60px 40px}
+    .sidebar-section{margin-bottom:40px}
+    .sidebar-label{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gray);margin-bottom:12px;display:block}
+    .sidebar-value{font-size:13px;line-height:1.5}
+    .post-content{padding:60px 60px 80px;max-width:760px}
+    .post-content p{margin-bottom:24px;font-size:15px;line-height:1.85;color:#2a2a2a}
+    .post-content h2{font-family:var(--font-display);font-size:32px;letter-spacing:.05em;margin:40px 0 16px}
+    .post-content h3{font-family:var(--font-display);font-size:22px;letter-spacing:.05em;margin:32px 0 12px}
+    .post-content blockquote{border-left:3px solid var(--black);margin:32px 0;padding:12px 0 12px 24px;font-size:16px;line-height:1.7;color:#4a4a4a;font-style:italic}
+    .post-content img{width:100%;display:block;filter:grayscale(100%);margin:32px 0}
+    .post-content a{color:var(--black);border-bottom:1px solid var(--light-gray);text-decoration:none;transition:border-color .2s}
+    .post-content a:hover{border-color:var(--black)}
+    .post-nav{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--black)}
+    .post-nav-item{padding:32px 40px;text-decoration:none;color:var(--black);transition:background .15s;display:block}
+    .post-nav-item:first-child{border-right:1px solid var(--black)}
+    .post-nav-item:hover{background:var(--light-gray)}
+    .post-nav-dir{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gray);margin-bottom:8px}
+    .post-nav-title{font-family:var(--font-display);font-size:20px;letter-spacing:.04em}
+    footer{display:flex;justify-content:space-between;align-items:center;padding:20px 40px}
+    .footer-logo{font-family:var(--font-display);font-size:18px;letter-spacing:.08em}
+    .footer-copy{font-size:10px;color:var(--gray);letter-spacing:.1em}
+    .footer-links{display:flex;gap:24px;list-style:none}
+    .footer-links a{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);text-decoration:none}
+    .footer-links a:hover{color:var(--black)}
+    @media(max-width:900px){
+      nav{padding:20px}
+      .post-header{grid-template-columns:1fr}
+      .post-header-left{padding:40px 20px;border-right:none;border-bottom:1px solid var(--black)}
+      .post-header-right{height:50vw}
+      .post-body{grid-template-columns:1fr}
+      .post-sidebar{border-right:none;border-bottom:1px solid var(--black);padding:32px 20px}
+      .post-content{padding:40px 20px 60px}
+      .post-tags{padding:16px 20px}
+      .post-nav{grid-template-columns:1fr}
+      .post-nav-item:first-child{border-right:none;border-bottom:1px solid var(--black)}
+      footer{flex-wrap:wrap;gap:12px;padding:20px}
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">ANNA VOSS</a>
+    <a href="../index.html#blog" class="nav-back">Journal</a>
+  </nav>
+
+  <div class="post-header">
+    <div class="post-header-left">
+      <div>
+        <div class="post-meta-top">
+          <span class="post-category">Technique</span>
+          <span class="post-dot"></span>
+          <span class="post-date-label">30 March 2026</span>
+        </div>
+        <h1 class="post-title">The Back of a Stranger</h1>
+        <p class="post-excerpt">Every great street photograph is a question that never gets answered. The back of a stranger walking away is the purest version of that question.</p>
+      </div>
+      <dl class="post-meta-bottom">
+        <div><dt>Category</dt><dd>Technique</dd></div>
+        <div><dt>Published</dt><dd>March 2026</dd></div>
+        <div><dt>Read time</dt><dd>1 min</dd></div>
+      </dl>
+    </div>
+    <div class="post-header-right"><img src="../images/walking_figure.png" alt="The Back of a Stranger" /></div>
+  </div>
+
+  <div class="post-tags"><span class="post-tags-label">Tags</span><span class="tag">Street</span><span class="tag">Figure</span><span class="tag">Long exposure</span><span class="tag">Blur</span></div>
+
+  <div class="post-body">
+    <div class="post-sidebar">
+      <div class="sidebar-section">
+        <span class="sidebar-label">Published</span>
+        <div class="sidebar-value">30 March 2026</div>
+      </div>
+      <div class="sidebar-section">
+        <span class="sidebar-label">Category</span>
+        <div class="sidebar-value">Technique</div>
+      </div>
+      <div class="sidebar-section"><span class="sidebar-label">Tags</span><div class="sidebar-value">Street, Figure, Long exposure, Blur</div></div>
+    </div>
+    <div class="post-content">
+      <p>I have never been interested in faces. Faces tell you too much — emotion, age, intention. The back of a person tells you nothing, and nothing is where the imagination starts working.
+This frame was made on Langstrasse at 11pm on a Tuesday. One second exposure. The subject never knew I was there.</p>
+
+<blockquote>"The photographer is an armed version of the solitary walker." — Susan Sontag</blockquote>
+
+<p>The blur here is not a technical accident. It is the point. What you are looking at is not a person — it is the time it took for a person to cross a patch of light. Twelve steps compressed into a single silver smear.</p>
+
+<blockquote>"To photograph is to confer importance." — Susan Sontag</blockquote>
+
+<p>I keep coming back to the coat. Even dissolved into streaks you can read the weight of it, the way it moves differently than the legs beneath it. The material world survives the motion. The person does not.</p>
+<p>That feels true of a lot of things.</p>
+    </div>
+  </div>
+
+  <div class="post-nav">
+    <a class="post-nav-item" href="intentional-camera-movement.html"><div class="post-nav-dir">← Previous</div><div class="post-nav-title">On Intentional Camera Movement: Surrendering Control</div></a>
+    <a class="post-nav-item" href="between-form-and-dissolution.html" style="text-align:right"><div class="post-nav-dir">Next →</div><div class="post-nav-title">BETWEEN FORM AND DISSOLUTION</div></a>
+  </div>
+
+  <footer>
+    <span class="footer-logo">ANNA VOSS</span>
+    <span class="footer-copy">© 2026 Anna Voss. All rights reserved.</span>
+    <ul class="footer-links">
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">Prints</a></li>
+      <li><a href="#">Press</a></li>
+    </ul>
+  </footer>
+
+  <script>
+    const c = document.getElementById('cursor');
+    document.addEventListener('mousemove', e => { c.style.left=e.clientX+'px'; c.style.top=e.clientY+'px'; });
+    document.querySelectorAll('a').forEach(el => {
+      el.addEventListener('mouseenter', () => c.classList.add('expanded'));
+      el.addEventListener('mouseleave', () => c.classList.remove('expanded'));
+    });
+  </script>
+</body>
+</html>
