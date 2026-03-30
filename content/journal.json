@@ -105,6 +105,27 @@
       "readTime": 1,
       "updatedAt": "2026-03-30T18:53:10.056Z",
       "createdAt": "2026-03-30T18:53:10.056Z"
+    },
+    {
+      "id": "post-1774902972160",
+      "slug": "one-face-six-times",
+      "status": "published",
+      "title": "One Face, Six Times",
+      "excerpt": "I asked the same person to sit still for six exposures on the same frame. They moved anyway. That was the point.",
+      "body": "<p>The instruction was simple: sit in the same position for six exposures, two seconds each, with a ten second gap between them. Don't try to hold still. Just sit.</p>\n\n<p>Nobody sits still for ten seconds. The spine shifts. The head drops a fraction. The eyes move even when the face doesn't. Six exposures of the same person in the same chair and what you get is not a portrait — it is an argument between six versions of the same face about which one is the real one.\nNone of them win.</p>\n\n<h2>On identity and the long exposure</h2>\n\n<blockquote>\"We are all ghosts of ourselves.\" — Ralph Eugene Meatyard</blockquote>\n\n<p>Portrait photography has always lied. The single frozen frame implies a self that is stable, readable, fixed. This is the fundamental fiction of the medium — that a person can be captured. They cannot. You can only capture a slice of light reflected from a surface at a specific moment and call it a person if you want to.</p>\n\n<p>The multiple exposure makes the lie visible. Here are six slices. Here is the instability they've been hiding.</p>\n\n<h2>What the camera actually saw</h2>\n\n<p>A forehead in six slightly different positions stacked into something that looks like a crown. Eyes that exist in triplicate across a single face. A jaw that has become a smear of silver. The sitter told me afterwards they felt watched. I told them they were right — watched six times simultaneously, which is different from being watched once.</p>\n\n<blockquote>\"To photograph people is to violate them.\" — Susan Sontag</blockquote>\n\n<p>I don't entirely agree with Sontag here but I understand why she said it. There is something aggressive about this particular image. The repetition feels less like a portrait and more like an interrogation — the same question asked six times, hoping the answer will change.\nIt didn't. That was the other point.</p>\n\n<h2>Process note</h2>\n\n<p>Shot on a Mamiya RB67. 120mm film, Ilford Delta 400 pushed to 1600. Six two-second exposures on a single frame with the dark slide partially reinserted between each one to prevent fogging. Printed on fibre, grade 4 filter, significant burning in the edges.</p>",
+      "date": "2026-03-30",
+      "featuredImage": "images/multiple_exposure.png",
+      "category": "Alternative",
+      "tags": [
+        "Multiple exposure",
+        "Portrait",
+        "Experimental",
+        "Identity"
+      ],
+      "metaDescription": "Six exposures of one face on a single frame — an experimental portrait series on identity, instability, and the lie at the centre of all portrait photography.",
+      "readTime": 4,
+      "updatedAt": "2026-03-30T20:36:12.160Z",
+      "createdAt": "2026-03-30T20:36:12.160Z"
     }
   ],
   "categories": [
