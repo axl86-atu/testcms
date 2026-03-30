@@ -1,6 +1,7 @@
 name: Build Journal Posts
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - 'content/journal.json'
