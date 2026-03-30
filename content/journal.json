@@ -1,5 +1,4 @@
 {
-  "categories": ["Technique", "Film", "Darkroom", "Alternative", "Exhibition"],
   "posts": [
     {
       "id": "post-001",
@@ -11,7 +10,12 @@
       "date": "2025-03-01",
       "featuredImage": "images/trees.png",
       "category": "Technique",
-      "tags": ["ICM", "Motion", "Long exposure", "Technique"],
+      "tags": [
+        "ICM",
+        "Motion",
+        "Long exposure",
+        "Technique"
+      ],
       "metaDescription": "An exploration of intentional camera movement — how surrendering control of your camera can produce the most expressive images.",
       "readTime": 4,
       "createdAt": "2025-03-01T09:00:00.000Z",
@@ -27,7 +31,12 @@
       "date": "2025-01-15",
       "featuredImage": "images/water.png",
       "category": "Film",
-      "tags": ["Film", "Digital", "Practice", "Philosophy"],
+      "tags": [
+        "Film",
+        "Digital",
+        "Practice",
+        "Philosophy"
+      ],
       "metaDescription": "Why Anna Voss chose to shoot exclusively on film — and what the constraint of 36 exposures taught her about intention.",
       "readTime": 3,
       "createdAt": "2025-01-15T09:00:00.000Z",
@@ -43,11 +52,45 @@
       "date": "2024-11-10",
       "featuredImage": "images/leaks.png",
       "category": "Darkroom",
-      "tags": ["Darkroom", "Printing", "Fibre", "Craft"],
+      "tags": [
+        "Darkroom",
+        "Printing",
+        "Fibre",
+        "Craft"
+      ],
       "metaDescription": "The slow, deliberate practice of printing on fibre-based paper in the darkroom — and why the extra time is worth it.",
       "readTime": 3,
       "createdAt": "2024-11-10T09:00:00.000Z",
       "updatedAt": "2024-11-10T09:00:00.000Z"
+    },
+    {
+      "id": "post-1774892981446",
+      "slug": "between-form-and-dissolution",
+      "status": "published",
+      "title": "BETWEEN FORM AND DISSOLUTION",
+      "excerpt": "Six figures. None of them quite there. This series began as an experiment in long exposure with moving subjects and became something closer to a meditation on presence — what remains of a person when the shutter stays open too long.",
+      "body": "<p>There is a moment in a long exposure when a person stops being a person and becomes something else entirely. Not a ghost exactly. Not an absence. Something in between — a residue of movement, a shape that the light has tried to hold onto and failed.\nThis series started without a clear intention. I wanted to see what happened when subjects moved freely during a two-second exposure in controlled studio light. What I didn't expect was how much personality survived the blur. You can still read posture. You can still feel weight. One figure leans back, another pushes forward. The dissolution is individual.</p>\n<h2>On the light</h2>\n<p>The backlight was the discovery. A single strip softbox at floor level, aimed upward, created the halo effect at the base of each figure — that white flare where the feet meet the ground. It makes them look like they're emerging from something, or disappearing into it. I've never been able to decide which direction they're moving.</p>\n<h2>On black and white</h2>\n<p>Colour would have ruined this completely. Colour would have told you what kind of room this is, what the subjects were wearing, what time of day it was. Black and white strips all of that away and leaves you with pure form — or in this case, the memory of form. The gray tones in the background aren't empty. They're full of the movement that didn't register.</p>\n<h2>On the subjects</h2>\n<p>Six people. None of them knew each other. I asked each one to walk slowly toward the camera and then stop — but the instruction was deliberately vague about when to stop. Some stopped early, some kept moving almost to the lens. That difference in decision-making is visible in the image if you know to look for it.</p>\n<h2>What I kept thinking about</h2>\n<p>Étienne-Jules Marey, who in the 1880s used chronophotography to study human movement — breaking the body into sequential positions across a single frame. This is the opposite impulse: collapsing all those positions back into one, letting them argue with each other until the figure becomes illegible. Marey wanted to understand motion. I wanted to lose it.</p>",
+      "date": "2026-03-30",
+      "featuredImage": "images/blurred_humans.png",
+      "category": "Alternative",
+      "tags": [
+        "ICM",
+        "Motion blur",
+        "Figure",
+        "Alternative process",
+        "Studio"
+      ],
+      "metaDescription": "A long exposure studio series exploring what remains of the human figure when movement dissolves form — six subjects, two seconds, one frame.",
+      "readTime": 3,
+      "updatedAt": "2026-03-30T17:49:41.446Z",
+      "createdAt": "2026-03-30T17:49:41.446Z"
     }
+  ],
+  "categories": [
+    "Technique",
+    "Film",
+    "Darkroom",
+    "Alternative",
+    "Exhibition"
   ]
 }
