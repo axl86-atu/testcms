@@ -1,0 +1,32 @@
+name: Build Journal Posts
+
+on:
+  push:
+    paths:
+      - 'content/journal.json'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate post HTML files
+        run: node build.js
+
+      - name: Commit and push generated files
+        run: |
+          git config user.name "CMS Bot"
+          git config user.email "cms@annavoss.ch"
+          git add posts/ index.html
+          git diff --staged --quiet || git commit -m "Build: regenerate post pages"
+          git push
