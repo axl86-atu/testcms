@@ -253,14 +253,16 @@
     </div>
   </section>
 
-  <!-- JOURNAL — rendered from content/journal.json -->
+  <!-- JOURNAL — pre-rendered by build.js, fallback via JS -->
   <section id="blog">
     <div class="section-header">
       <h2 class="section-title">JOURNAL</h2>
       <span class="section-label">Thoughts on practice</span>
     </div>
     <div class="blog-grid" id="blog-grid">
-      <div class="blog-empty">Loading…</div>
+      <!-- CMS:JOURNAL:START -->
+      <div class="blog-empty">Journal coming soon.</div>
+    <!-- CMS:JOURNAL:END -->
     </div>
   </section>
 
@@ -346,7 +348,7 @@
         // Show max 3: first is featured
         const shown = posts.slice(0,3);
         grid.innerHTML = shown.map(p=>`
-          <a class="blog-item reveal" href="post.html?slug=${p.slug}">
+          <a class="blog-item reveal" href="posts/${p.slug}.html">
             <div class="blog-item-image"><img src="${p.featuredImage||'images/hero.png'}" alt="${p.title}" /></div>
             <div class="blog-item-body">
               <span class="blog-item-tag">${p.category||'Journal'}</span>
