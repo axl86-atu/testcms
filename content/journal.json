@@ -1,0 +1,53 @@
+{
+  "categories": ["Technique", "Film", "Darkroom", "Alternative", "Exhibition"],
+  "posts": [
+    {
+      "id": "post-001",
+      "slug": "intentional-camera-movement",
+      "status": "published",
+      "title": "On Intentional Camera Movement: Surrendering Control",
+      "excerpt": "There is a particular kind of terror in letting go of a photograph mid-exposure. ICM asks you to unlearn everything you know about holding still.",
+      "body": "<p>There is a particular kind of terror in letting go of a photograph mid-exposure. ICM asks you to unlearn everything you know about holding still. The wrist rotation that destroys a landscape becomes the gesture that saves it.</p>\n\n<p>I've been practising for six years and I still don't fully know what I'm doing — and that's exactly the point. The moment you think you've mastered it, the results start feeling mechanical. ICM requires a commitment to genuine uncertainty.</p>\n\n<h2>The mechanics</h2>\n\n<p>A shutter speed between 1/4 and 2 seconds is where most of the interesting work happens. Too fast and the blur is too subtle. Too slow and the image dissolves into abstraction — which can be beautiful, but it's a different discipline.</p>\n\n<blockquote>The camera is just a brush. The sensor is just a canvas. The motion is the paint.</blockquote>\n\n<p>I hold the camera loosely — no death grip, no locked wrists. I let the weight of the lens do part of the work. For vertical blurs like forest trees, a slow upward motion with a slight spiral at the end. For horizontal urban blurs, a side-to-side motion with a late acceleration.</p>\n\n<h2>What you can't control</h2>\n\n<p>Wind. Your own heartbeat at 1/2 second. The subject moving independently of your motion. These are features, not bugs. The images that surprise me most are always the ones where something moved that I didn't intend.</p>",
+      "date": "2025-03-01",
+      "featuredImage": "images/trees.png",
+      "category": "Technique",
+      "tags": ["ICM", "Motion", "Long exposure", "Technique"],
+      "metaDescription": "An exploration of intentional camera movement — how surrendering control of your camera can produce the most expressive images.",
+      "readTime": 4,
+      "createdAt": "2025-03-01T09:00:00.000Z",
+      "updatedAt": "2025-03-01T09:00:00.000Z"
+    },
+    {
+      "id": "post-002",
+      "slug": "stopped-shooting-digital",
+      "status": "published",
+      "title": "Why I Stopped Shooting Digital Entirely",
+      "excerpt": "The decision took three years to make and about ten minutes to commit to. Film forces decisions. Digital defers them.",
+      "body": "<p>The decision took three years to make and about ten minutes to commit to. I'd been shooting hybrid — film for personal work, digital for commissions — and the gap between the two was becoming embarrassing. Not in quality. In intention.</p>\n\n<p>Digital is a medium of infinite takes. Film is a medium of considered ones. My digital work was technically fine and completely bloodless. My film work had accidents in it, and the accidents were the best parts.</p>\n\n<h2>The cost of infinite storage</h2>\n\n<p>When storage is free, editing is deferred. I would come home from a shoot with 800 RAW files and spend a week in Lightroom making choices I should have made in the field. Film made me make those choices before I pressed the shutter.</p>\n\n<blockquote>You can't bracket your way to a good photograph. You can only decide.</blockquote>\n\n<p>I'm not arguing that film is objectively better. I'm arguing that the constraints of film made me a better photographer. The 36-exposure limit. The cost per frame. The wait for development. All of it forces clarity.</p>",
+      "date": "2025-01-15",
+      "featuredImage": "images/water.png",
+      "category": "Film",
+      "tags": ["Film", "Digital", "Practice", "Philosophy"],
+      "metaDescription": "Why Anna Voss chose to shoot exclusively on film — and what the constraint of 36 exposures taught her about intention.",
+      "readTime": 3,
+      "createdAt": "2025-01-15T09:00:00.000Z",
+      "updatedAt": "2025-01-15T09:00:00.000Z"
+    },
+    {
+      "id": "post-003",
+      "slug": "printing-on-fibre",
+      "status": "published",
+      "title": "Printing on Fibre: A Slower Practice",
+      "excerpt": "Resin-coated paper dries in minutes. Fibre takes hours. That difference in time changes how you think.",
+      "body": "<p>Resin-coated paper dries in minutes. Fibre takes hours. That difference in time changes how you think about a print.</p>\n\n<p>With RC paper, you can run a test strip, adjust, and have a finished print in twenty minutes. With fibre, the drying, flattening, and washing alone take the better part of a day. You make fewer prints. You consider each one more carefully.</p>\n\n<h2>Why bother</h2>\n\n<p>Permanence. A well-processed fibre print, properly fixed and washed, will outlast any inkjet or digital print made today. Archivally speaking, we're talking centuries versus decades. For work that matters, that matters.</p>\n\n<p>There's also the surface. Fibre paper has a depth that RC can't replicate — the highlights have a warmth, the shadows have a density. Under a loupe you can see the silver in the emulsion. You're looking at actual silver, not a dye simulation of it.</p>\n\n<blockquote>Every fibre print is an object. An RC print is a document.</blockquote>\n\n<p>My process: expose, develop in Ilford Multigrade, stop, fix, wash for ten minutes, tone in selenium 1:20 for four minutes, wash for forty minutes, dry face-down on a mesh rack overnight. No shortcuts.</p>",
+      "date": "2024-11-10",
+      "featuredImage": "images/leaks.png",
+      "category": "Darkroom",
+      "tags": ["Darkroom", "Printing", "Fibre", "Craft"],
+      "metaDescription": "The slow, deliberate practice of printing on fibre-based paper in the darkroom — and why the extra time is worth it.",
+      "readTime": 3,
+      "createdAt": "2024-11-10T09:00:00.000Z",
+      "updatedAt": "2024-11-10T09:00:00.000Z"
+    }
+  ]
+}

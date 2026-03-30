@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anna Voss — Photography</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0a0a0a; --white: #f5f4f0; --gray: #9a9a9a; --light-gray: #e8e7e3;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--white); color: var(--black); font-family: var(--font-body); font-size: 13px; line-height: 1.6; letter-spacing: 0.01em; cursor: crosshair; }
+    .cursor { width: 8px; height: 8px; background: var(--black); border-radius: 50%; position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .2s, height .2s; }
+    .cursor.expanded { width: 40px; height: 40px; background: transparent; border: 1px solid var(--black); }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: flex-end; padding: 28px 40px 20px; background: var(--white); border-bottom: 1px solid var(--black); }
+    .nav-logo { font-family: var(--font-display); font-size: 26px; letter-spacing: 0.08em; text-decoration: none; color: var(--black); line-height: 1; }
+    .nav-links { display: flex; gap: 36px; list-style: none; align-items: flex-end; }
+    .nav-links a { text-decoration: none; color: var(--black); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; position: relative; padding-bottom: 2px; }
+    .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--black); transition: width .3s; }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-counter { font-size: 10px; color: var(--gray); letter-spacing: 0.06em; }
+    #hero { margin-top: 73px; display: grid; grid-template-columns: 1fr 1fr; height: calc(100vh - 73px); border-bottom: 1px solid var(--black); }
+    .hero-left { padding: 60px 40px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid var(--black); }
+    .hero-headline { font-family: var(--font-display); font-size: clamp(72px, 9vw, 130px); line-height: 0.92; letter-spacing: 0.02em; overflow: hidden; }
+    .hero-headline span { display: block; transform: translateY(100%); animation: slideUp .8s cubic-bezier(.16,1,.3,1) forwards; }
+    .hero-headline span:nth-child(2) { animation-delay: .1s; }
+    .hero-headline span:nth-child(3) { animation-delay: .2s; }
+    .hero-headline span:nth-child(4) { animation-delay: .3s; }
+    @keyframes slideUp { to { transform: translateY(0); } }
+    .hero-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; border-top: 1px solid var(--black); padding-top: 24px; }
+    .hero-meta-item label { display: block; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray); margin-bottom: 4px; }
+    .hero-meta-item p { font-size: 12px; line-height: 1.4; }
+    .hero-right { position: relative; overflow: hidden; }
+    .hero-right img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(100%); transform: scale(1.02); animation: zoomOut 1.4s cubic-bezier(.16,1,.3,1) forwards; }
+    @keyframes zoomOut { to { transform: scale(1); } }
+    .hero-index { position: absolute; bottom: 24px; right: 24px; font-family: var(--font-display); font-size: 80px; color: rgba(255,255,255,.15); line-height: 1; pointer-events: none; }
+    .ticker-wrap { border-bottom: 1px solid var(--black); overflow: hidden; padding: 12px 0; background: var(--black); color: var(--white); }
+    .ticker { display: flex; animation: ticker 22s linear infinite; white-space: nowrap; }
+    .ticker span { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; padding: 0 40px; }
+    .ticker span.dot { color: var(--gray); padding: 0; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .section-header { display: flex; justify-content: space-between; align-items: baseline; padding: 32px 40px 28px; border-bottom: 1px solid var(--black); }
+    .section-title { font-family: var(--font-display); font-size: 42px; letter-spacing: 0.06em; line-height: 1; }
+    .section-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray); }
+    #work { border-bottom: 1px solid var(--black); }
+    .work-grid { display: grid; grid-template-columns: repeat(3,1fr); }
+    .work-item { position: relative; overflow: hidden; border-right: 1px solid var(--black); border-bottom: 1px solid var(--black); aspect-ratio: 4/5; cursor: crosshair; }
+    .work-item:nth-child(3n) { border-right: none; }
+    .work-item:nth-child(n+4) { border-bottom: none; }
+    .work-item img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(100%); transition: transform .7s cubic-bezier(.16,1,.3,1); }
+    .work-item:hover img { transform: scale(1.04); }
+    .work-overlay { position: absolute; inset: 0; background: rgba(10,10,10,0); display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; transition: background .4s; }
+    .work-item:hover .work-overlay { background: rgba(10,10,10,.55); }
+    .work-info { transform: translateY(10px); opacity: 0; transition: all .35s; }
+    .work-item:hover .work-info { transform: translateY(0); opacity: 1; }
+    .work-info h3 { font-family: var(--font-display); font-size: 22px; color: var(--white); letter-spacing: 0.05em; line-height: 1; }
+    .work-info span { font-size: 10px; color: rgba(245,244,240,.6); letter-spacing: 0.15em; text-transform: uppercase; }
+    .work-num { position: absolute; top: 14px; left: 16px; font-size: 10px; color: transparent; letter-spacing: 0.1em; transition: color .3s; }
+    .work-item:hover .work-num { color: rgba(245,244,240,.5); }
+    #about { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--black); }
+    .about-image { border-right: 1px solid var(--black); overflow: hidden; position: relative; }
+    .about-image img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(100%); min-height: 520px; }
+    .about-image-caption { position: absolute; bottom: 20px; left: 20px; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,244,240,.5); mix-blend-mode: difference; }
+    .about-content { padding: 60px 50px; display: flex; flex-direction: column; justify-content: space-between; }
+    .about-content h2 { font-family: var(--font-display); font-size: 56px; line-height: 0.92; letter-spacing: 0.04em; margin-bottom: 32px; }
+    .about-text p { font-size: 13px; line-height: 1.8; color: #3a3a3a; margin-bottom: 16px; max-width: 440px; }
+    .about-stats { display: grid; grid-template-columns: repeat(3,1fr); border-top: 1px solid var(--black); margin-top: 48px; padding-top: 28px; }
+    .stat { padding-right: 20px; border-right: 1px solid var(--light-gray); }
+    .stat:last-child { border-right: none; padding-left: 20px; padding-right: 0; }
+    .stat:nth-child(2) { padding-left: 20px; }
+    .stat-number { font-family: var(--font-display); font-size: 44px; line-height: 1; }
+    .stat-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gray); margin-top: 4px; }
+    #process { border-bottom: 1px solid var(--black); }
+    .process-grid { display: grid; grid-template-columns: repeat(4,1fr); }
+    .process-item { padding: 40px 32px; border-right: 1px solid var(--black); }
+    .process-item:last-child { border-right: none; }
+    .process-num { font-family: var(--font-display); font-size: 60px; color: var(--light-gray); line-height: 1; margin-bottom: 16px; }
+    .process-item h3 { font-family: var(--font-display); font-size: 20px; letter-spacing: 0.06em; margin-bottom: 12px; }
+    .process-item p { font-size: 12px; line-height: 1.7; color: #5a5a5a; }
+    #blog { border-bottom: 1px solid var(--black); }
+    .blog-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; border-top: 1px solid var(--black); }
+    .blog-item { border-right: 1px solid var(--black); overflow: hidden; cursor: crosshair; text-decoration: none; color: inherit; display: flex; flex-direction: column; }
+    .blog-item:last-child { border-right: none; }
+    .blog-item-image { overflow: hidden; border-bottom: 1px solid var(--black); }
+    .blog-item-image img { width: 100%; display: block; filter: grayscale(100%); object-fit: cover; transition: transform .6s cubic-bezier(.16,1,.3,1); }
+    .blog-item:first-child .blog-item-image img { height: 380px; }
+    .blog-item:not(:first-child) .blog-item-image img { height: 200px; }
+    .blog-item:hover .blog-item-image img { transform: scale(1.05); }
+    .blog-item-body { padding: 24px 28px; flex: 1; }
+    .blog-item-tag { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gray); margin-bottom: 10px; display: block; }
+    .blog-item-title { font-family: var(--font-display); font-size: 22px; letter-spacing: 0.04em; line-height: 1.1; margin-bottom: 10px; }
+    .blog-item:first-child .blog-item-title { font-size: 32px; }
+    .blog-item-excerpt { font-size: 12px; line-height: 1.65; color: #5a5a5a; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .blog-item-footer { display: flex; justify-content: space-between; align-items: center; padding: 14px 28px; border-top: 1px solid var(--light-gray); margin-top: auto; }
+    .blog-date { font-size: 10px; color: var(--gray); letter-spacing: 0.1em; }
+    .blog-read { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--black); }
+    .blog-read::after { content: ' →'; }
+    .blog-empty { padding: 60px 40px; color: var(--gray); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; grid-column: 1/-1; text-align: center; }
+    #contact { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--black); }
+    .contact-left { padding: 60px 50px; border-right: 1px solid var(--black); }
+    .contact-left h2 { font-family: var(--font-display); font-size: clamp(48px,5vw,72px); line-height: 0.95; letter-spacing: 0.04em; margin-bottom: 32px; }
+    .contact-left p { font-size: 13px; line-height: 1.8; color: #3a3a3a; max-width: 380px; margin-bottom: 40px; }
+    .contact-details { border-top: 1px solid var(--black); padding-top: 24px; }
+    .contact-details dt { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray); margin-bottom: 4px; }
+    .contact-details dd { font-size: 13px; margin-bottom: 20px; }
+    .contact-details a { color: var(--black); text-decoration: none; border-bottom: 1px solid var(--light-gray); transition: border-color .2s; }
+    .contact-details a:hover { border-color: var(--black); }
+    .contact-right { padding: 60px 50px; }
+    .contact-right h3 { font-family: var(--font-display); font-size: 28px; letter-spacing: 0.06em; margin-bottom: 28px; }
+    .form-field { margin-bottom: 20px; }
+    .form-field label { display: block; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray); margin-bottom: 8px; }
+    .form-field input, .form-field textarea, .form-field select { width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--black); padding: 8px 0; font-family: var(--font-body); font-size: 13px; color: var(--black); outline: none; -webkit-appearance: none; border-radius: 0; }
+    .form-field textarea { resize: none; height: 80px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .btn-submit { margin-top: 8px; background: var(--black); color: var(--white); border: 1px solid var(--black); padding: 14px 40px; font-family: var(--font-body); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; cursor: crosshair; transition: background .25s, color .25s; }
+    .btn-submit:hover { background: var(--white); color: var(--black); }
+    .lightbox { position: fixed; inset: 0; background: rgba(10,10,10,.96); z-index: 200; display: none; align-items: center; justify-content: center; }
+    .lightbox.open { display: flex; }
+    .lightbox-inner { position: relative; max-width: 80vw; max-height: 85vh; }
+    .lightbox-inner img { max-width: 100%; max-height: 85vh; object-fit: contain; display: block; filter: grayscale(100%); }
+    .lightbox-close { position: absolute; top: -44px; right: 0; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; cursor: crosshair; background: none; border: none; color: #aaa; transition: color .2s; }
+    .lightbox-close:hover { color: var(--white); }
+    .lightbox-caption { margin-top: 16px; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #666; text-align: center; }
+    footer { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; }
+    .footer-logo { font-family: var(--font-display); font-size: 18px; letter-spacing: 0.08em; color: var(--black); }
+    .footer-copy { font-size: 10px; color: var(--gray); letter-spacing: 0.1em; }
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links a { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gray); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--black); }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s, transform .7s cubic-bezier(.16,1,.3,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 900px) {
+      nav { padding: 20px; }
+      .nav-links { gap: 20px; }
+      #hero { grid-template-columns: 1fr; height: auto; }
+      .hero-left { padding: 40px 20px; }
+      .hero-right { height: 60vw; border-right: none; }
+      .section-header { padding: 24px 20px; }
+      .work-grid { grid-template-columns: 1fr 1fr; }
+      #about { grid-template-columns: 1fr; }
+      .about-image { border-right: none; border-bottom: 1px solid var(--black); }
+      .about-content { padding: 40px 20px; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .blog-grid { grid-template-columns: 1fr; }
+      .blog-item { border-right: none; border-bottom: 1px solid var(--black); }
+      #contact { grid-template-columns: 1fr; }
+      .contact-left { border-right: none; border-bottom: 1px solid var(--black); padding: 40px 20px; }
+      .contact-right { padding: 40px 20px; }
+      footer { flex-wrap: wrap; gap: 12px; padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+
+  <nav>
+    <a href="#" class="nav-logo">ANNA VOSS</a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#blog">Journal</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <span class="nav-counter">Zürich — 2025</span>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-left">
+      <div class="hero-headline">
+        <span>MOTION</span><span>IS THE</span><span>TRUTH</span><span>OF TIME</span>
+      </div>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><label>Practice</label><p>Long exposure & ICM<br>Alternative process</p></div>
+        <div class="hero-meta-item"><label>Based in</label><p>Zürich, Switzerland<br>Available worldwide</p></div>
+        <div class="hero-meta-item"><label>Medium</label><p>35mm & 120mm film<br>Digital post-processed</p></div>
+        <div class="hero-meta-item"><label>Since</label><p>2011<br>14 years of practice</p></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img src="images/hero.png" alt="Hero photograph" />
+      <div class="hero-index">01</div>
+    </div>
+  </section>
+
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <span>Long Exposure Photography</span><span class="dot">—</span>
+      <span>Intentional Camera Movement</span><span class="dot">—</span>
+      <span>Alternative Process</span><span class="dot">—</span>
+      <span>Black &amp; White</span><span class="dot">—</span>
+      <span>Fine Art Prints</span><span class="dot">—</span>
+      <span>Zürich, Switzerland</span><span class="dot">—</span>
+      <span>Long Exposure Photography</span><span class="dot">—</span>
+      <span>Intentional Camera Movement</span><span class="dot">—</span>
+      <span>Alternative Process</span><span class="dot">—</span>
+      <span>Black &amp; White</span><span class="dot">—</span>
+      <span>Fine Art Prints</span><span class="dot">—</span>
+      <span>Zürich, Switzerland</span><span class="dot">—</span>
+    </div>
+  </div>
+
+  <section id="work">
+    <div class="section-header">
+      <h2 class="section-title">SELECTED WORK</h2>
+      <span class="section-label">Portfolio — 2022–2025</span>
+    </div>
+    <div class="work-grid">
+      <div class="work-item reveal" data-img="images/dancer.png" data-title="Dancer Study No.3" data-year="2024"><img src="images/dancer.png" alt="Dancer" /><div class="work-overlay"><span class="work-num">01</span><div class="work-info"><h3>Dancer Study No.3</h3><span>ICM — 2024</span></div></div></div>
+      <div class="work-item reveal" data-img="images/trees.png" data-title="Forest Vertical" data-year="2023"><img src="images/trees.png" alt="Trees" /><div class="work-overlay"><span class="work-num">02</span><div class="work-info"><h3>Forest Vertical</h3><span>ICM — 2023</span></div></div></div>
+      <div class="work-item reveal" data-img="images/portrait.png" data-title="Unfocused I" data-year="2024"><img src="images/portrait.png" alt="Portrait" /><div class="work-overlay"><span class="work-num">03</span><div class="work-info"><h3>Unfocused I</h3><span>Bokeh study — 2024</span></div></div></div>
+      <div class="work-item reveal" data-img="images/street.png" data-title="Horizontal Night" data-year="2023"><img src="images/street.png" alt="Street" /><div class="work-overlay"><span class="work-num">04</span><div class="work-info"><h3>Horizontal Night</h3><span>Long exposure — 2023</span></div></div></div>
+      <div class="work-item reveal" data-img="images/water.png" data-title="Water Memory" data-year="2022"><img src="images/water.png" alt="Water" /><div class="work-overlay"><span class="work-num">05</span><div class="work-info"><h3>Water Memory</h3><span>Long exposure — 2022</span></div></div></div>
+      <div class="work-item reveal" data-img="images/leaks.png" data-title="Light Leaks" data-year="2025"><img src="images/leaks.png" alt="Light Leaks" /><div class="work-overlay"><span class="work-num">06</span><div class="work-info"><h3>Light Leaks</h3><span>Alternative — 2025</span></div></div></div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="about-image">
+      <img src="images/photographer.png" alt="Anna Voss" />
+      <span class="about-image-caption">Anna Voss — Zürich, 2024</span>
+    </div>
+    <div class="about-content">
+      <div>
+        <h2 class="reveal">THE BLUR<br>IS THE<br>SUBJECT</h2>
+        <div class="about-text">
+          <p class="reveal">I work exclusively in black and white. Not out of nostalgia, but because colour is noise — it seduces the eye before the eye has time to think. Strip it away and what remains is geometry, light, and the weight of a moment.</p>
+          <p class="reveal">My practice centres on motion: intentional camera movement, long exposures, radical defocus. The camera becomes a brush. Sharpness is overrated — the human eye in real life never resolves everything at once.</p>
+          <p class="reveal">I shoot on 35mm and 120mm film, developed in my Zürich studio. Every print is hand-made. Limited editions only.</p>
+        </div>
+      </div>
+      <div class="about-stats reveal">
+        <div class="stat"><div class="stat-number">14</div><div class="stat-label">Years active</div></div>
+        <div class="stat"><div class="stat-number">3</div><div class="stat-label">Solo shows</div></div>
+        <div class="stat"><div class="stat-number">240</div><div class="stat-label">Prints sold</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="section-header">
+      <h2 class="section-title">PROCESS</h2>
+      <span class="section-label">How the work is made</span>
+    </div>
+    <div class="process-grid">
+      <div class="process-item reveal"><div class="process-num">01</div><h3>EXPOSURE</h3><p>Every shot is planned around light and movement. I use ND filters, long shutter speeds, and deliberate camera motion to build the frame over time rather than freeze it.</p></div>
+      <div class="process-item reveal"><div class="process-num">02</div><h3>FILM</h3><p>Ilford HP5 and Kodak TMax are my films of choice. I push them 1–2 stops for grain structure. The negative is the first edit — everything after is refinement.</p></div>
+      <div class="process-item reveal"><div class="process-num">03</div><h3>DARKROOM</h3><p>Developed and printed in my Zürich studio. I use fibre-based paper for permanence. Dodging and burning in the enlarger, not in Lightroom.</p></div>
+      <div class="process-item reveal"><div class="process-num">04</div><h3>EDITION</h3><p>All prints are limited to 10 + 2AP. Each is signed, numbered, and accompanied by a certificate. Once an edition is sold out, it is never reprinted.</p></div>
+    </div>
+  </section>
+
+  <!-- JOURNAL — rendered from content/journal.json -->
+  <section id="blog">
+    <div class="section-header">
+      <h2 class="section-title">JOURNAL</h2>
+      <span class="section-label">Thoughts on practice</span>
+    </div>
+    <div class="blog-grid" id="blog-grid">
+      <div class="blog-empty">Loading…</div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-left">
+      <h2 class="reveal">LET'S<br>TALK<br>ABOUT<br>LIGHT</h2>
+      <p class="reveal">Commissions, exhibitions, print enquiries, and collaborations — I'm open to conversations that make the work better.</p>
+      <dl class="contact-details reveal">
+        <dt>Email</dt><dd><a href="mailto:hello@annavoss.ch">hello@annavoss.ch</a></dd>
+        <dt>Studio</dt><dd>Hardstrasse 201, 8005 Zürich</dd>
+        <dt>Instagram</dt><dd><a href="#">@annavoss.photo</a></dd>
+      </dl>
+    </div>
+    <div class="contact-right">
+      <h3 class="reveal">SEND A MESSAGE</h3>
+      <form id="contact-form">
+        <div class="form-row">
+          <div class="form-field"><label>First name</label><input type="text" placeholder="—" /></div>
+          <div class="form-field"><label>Last name</label><input type="text" placeholder="—" /></div>
+        </div>
+        <div class="form-field"><label>Email</label><input type="email" placeholder="—" /></div>
+        <div class="form-field"><label>Subject</label>
+          <select>
+            <option value="">— Select —</option>
+            <option>Commission enquiry</option><option>Print purchase</option>
+            <option>Exhibition / collaboration</option><option>Press / editorial</option><option>Other</option>
+          </select>
+        </div>
+        <div class="form-field"><label>Message</label><textarea placeholder="—"></textarea></div>
+        <button type="submit" class="btn-submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-logo">ANNA VOSS</span>
+    <span class="footer-copy">© 2025 Anna Voss. All rights reserved.</span>
+    <ul class="footer-links">
+      <li><a href="#">Instagram</a></li><li><a href="#">Prints</a></li><li><a href="#">Press</a></li>
+    </ul>
+  </footer>
+
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" id="lightbox-close">Close ✕</button>
+      <img id="lightbox-img" src="" alt="" />
+      <p class="lightbox-caption" id="lightbox-caption"></p>
+    </div>
+  </div>
+
+  <script>
+    // Cursor
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', e => { cursor.style.left = e.clientX+'px'; cursor.style.top = e.clientY+'px'; });
+    function bindCursor() { document.querySelectorAll('a,button,.work-item,.blog-item').forEach(el => { el.addEventListener('mouseenter',()=>cursor.classList.add('expanded')); el.addEventListener('mouseleave',()=>cursor.classList.remove('expanded')); }); }
+    bindCursor();
+
+    // Reveal
+    const ro = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target);} }), {threshold:.12});
+    function observeReveal(){ document.querySelectorAll('.reveal').forEach(el=>ro.observe(el)); }
+    observeReveal();
+
+    // Lightbox
+    const lb = document.getElementById('lightbox'), lbImg = document.getElementById('lightbox-img'), lbCap = document.getElementById('lightbox-caption');
+    document.querySelectorAll('.work-item').forEach(item => item.addEventListener('click', ()=>{ lbImg.src=item.dataset.img; lbCap.textContent=item.dataset.title+' — '+item.dataset.year; lb.classList.add('open'); document.body.style.overflow='hidden'; }));
+    document.getElementById('lightbox-close').addEventListener('click', ()=>{ lb.classList.remove('open'); document.body.style.overflow=''; });
+    lb.addEventListener('click', e=>{ if(e.target===lb){ lb.classList.remove('open'); document.body.style.overflow=''; }});
+    document.addEventListener('keydown', e=>{ if(e.key==='Escape'){ lb.classList.remove('open'); document.body.style.overflow=''; }});
+
+    // Contact
+    document.getElementById('contact-form').addEventListener('submit', e=>{ e.preventDefault(); const b=e.target.querySelector('.btn-submit'); b.textContent='Sent ✓'; setTimeout(()=>b.textContent='Send Message',3000); });
+
+    // Journal
+    function fmtDate(d){ if(!d)return''; return new Date(d).toLocaleDateString('en-GB',{month:'long',year:'numeric'}); }
+
+    async function loadJournal(){
+      const grid = document.getElementById('blog-grid');
+      try {
+        const res = await fetch('content/journal.json?t='+Date.now());
+        const data = await res.json();
+        const posts = (data.posts||[]).filter(p=>p.status==='published').sort((a,b)=>new Date(b.date)-new Date(a.date));
+        if(!posts.length){ grid.innerHTML='<div class="blog-empty">Journal coming soon.</div>'; return; }
+        // Show max 3: first is featured
+        const shown = posts.slice(0,3);
+        grid.innerHTML = shown.map(p=>`
+          <a class="blog-item reveal" href="post.html?slug=${p.slug}">
+            <div class="blog-item-image"><img src="${p.featuredImage||'images/hero.png'}" alt="${p.title}" /></div>
+            <div class="blog-item-body">
+              <span class="blog-item-tag">${p.category||'Journal'}</span>
+              <h3 class="blog-item-title">${p.title}</h3>
+              <p class="blog-item-excerpt">${p.excerpt||''}</p>
+            </div>
+            <div class="blog-item-footer">
+              <span class="blog-date">${fmtDate(p.date)}</span>
+              <span class="blog-read">Read</span>
+            </div>
+          </a>`).join('');
+        observeReveal(); bindCursor();
+      } catch(e){ grid.innerHTML='<div class="blog-empty">Journal coming soon.</div>'; }
+    }
+    loadJournal();
+  </script>
+</body>
+</html>
